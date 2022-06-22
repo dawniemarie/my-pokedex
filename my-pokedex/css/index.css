@@ -5,12 +5,13 @@
   }
 
   @font-face {
-    font-family: Pokemon Hollow;
-    src: url(POKEMON_HOLLOW.TTF);
-  }
-  @font-face {
     font-family: Pokemon Solid;
     src: url(POKEMON_SOLID.TTF);
+  }
+
+  @font-face {
+    font-family: Pokemon Hollow;
+    src: url(POKEMON_HOLLOW.TTF);
   }
 
 
@@ -28,14 +29,47 @@ body {
     display: flex;
     font-family: sans-serif;
     justify-content: center;
+    flex-direction: column;
+    align-items:center;
+  }
+
+  .title-container {
+display:flex;
+justify-content: center;
+align-items:flex-end;
+  }
+
+  .title-inner {
+    width:100%;
+    justify-content: center;
+  }
+
+  h1 {
+    font-family:"Pokemon Solid";
+    font-size:68px;
+    justify-content: center;
+    letter-spacing: 0.25em;
+    color:#f4eb42;
+    text-shadow:5px 0 0 #000, -5px 0 0 #000, 0 5px 0 #000, 0 -5px 0 #000, 5px 5px #000, -3px -3px 0 #000, 3px -3px 0 #000, -3px 5px 0 #000;
+  }
+
+  h2 {
+    font-family:"Pokemon Solid";
+    font-size:25px;
+    padding-top:0px;
+    margin:0px;
+    text-align: center;
+    letter-spacing: 0.30em;
+    color:#f4eb42;
+    text-shadow:2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
   }
   
   .pokedex {
     align-items: flex-end;
     display: flex;
-    height: 500px;
-    margin: 50px;
-    width: 800px;
+    height: 700px;
+    margin-top: 20px;
+    width: 1100px;
   }
   
   .left-dex-container,
@@ -181,7 +215,7 @@ body {
     align-items: center;
     display: flex;
     justify-content: space-around;
-    margin: 10px 25px 0;
+    margin: 85px 25px 0;
   }
   
   .controllers__d-pad {
@@ -192,8 +226,8 @@ body {
   
   .d-pad__cell {
     background: black;
-    height: 25px;
-    width: 25px;
+    height: 40px;
+    width: 40px;
   }
   
   .d-pad__cell.top {
@@ -238,13 +272,13 @@ body {
     box-shadow: 0 0 2px 2px rgba(0,0,0, .3);
     color: rgba(255,255,255,.75);
     display: flex;
-    height: 35px;
+    height: 45px;
     justify-content: center;
-    width: 35px;
+    width: 45px;
   }
   
   .btns__btn:first-child {
-    margin-top: 5px;
+    margin-top: 20px;
   }
   
   .btns_btn:last-child {
@@ -267,14 +301,6 @@ body {
     width: 100%;
   }
   
-  .left-container__hinge:first-child {
-    border-bottom: 3px solid black;
-  }
-  
-  .left-dex-container__hinge:last-child {
-    border-top: 3px solid black;
-  }
-  
   .top-section__red {
     background: #ad0707;
   }
@@ -289,7 +315,7 @@ body {
   
   .right-dex-container {
     background: #fb0505;
-    height: calc(100% - 50px);
+    height: 100%;
     padding: 25px;
     width: calc(50% - 50px);
   }
@@ -363,8 +389,32 @@ body {
   .right-btn:active {
     box-shadow: inset 0 0 2px 2px rgba(0,0,0,.3);
   }
-  
-  
+
+  .right-dex-container__collection {
+    background: #fb0505;
+    display: flex;
+    border-right:3px solid #000;
+    height: 150px;
+    padding: 8px;
+    width: calc(100% + 28px);
+    flex-direction: row;
+  }
+  .right-dex-container__collection-black {
+    background: black;
+    box-shadow: 0 0 2px 2px rgb(0 0 0 / 30%);
+    height: 250px;
+    width:435px;
+    padding: 10px;
+    margin-top:30px;
+  }
+  .right-dex-container__collection-screen {
+    background: #b757bc;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    padding: 0px 15px 0;
+  }
   .default {
     display: none;
   }
