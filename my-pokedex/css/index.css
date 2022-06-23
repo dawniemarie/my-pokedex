@@ -166,6 +166,7 @@ align-items:flex-end;
   .poke-id {
     color: rgba(0,0,0,.5);
     font-size: 20px;
+    font-weight:bold;
   }
   
   .screen__image {
