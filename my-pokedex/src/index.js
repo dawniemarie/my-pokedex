@@ -120,12 +120,11 @@ const getPokeData = id => {
     pokeForm.addEventListener("submit", (event) => {
         event.preventDefault()
         event.target[0].value
-        fetch(`https://pokeapi.co/api/v2/pokemon/${event.target[0].value}`)
+        fetch(`https://pokeapi.co/api/v2/pokemon/${event.target[0].value.toLowerCase()}`)
         .then(res => res.json())
         .then(data => {
             resetMainScreen(); 
             const dataTypes = data['types'];
-            console.log(data['types'])
             const dataFirstType = dataTypes[0];
             const dataSecondType = dataTypes[1];
             pokeTypeOne.textContent = capFirstLetter(dataFirstType['type']['name']);
@@ -136,12 +135,14 @@ const getPokeData = id => {
                 pokeTypeTwo.classList.add('default');
                 pokeTypeTwo.textContent = '';
             }
+
             mainScreen.classList.add(dataFirstType['type']['name']);
             pokeName.textContent = capFirstLetter(data['name']);
             pokeId.textContent = '#' + data['id'];
             pokeWeight.textContent = data['weight'];
             pokeHeight.textContent = data['height'];
             pokeFrontImage.src = data['sprites']['front_default'] || '';
+            
         })
         pokeForm.reset()
     })
