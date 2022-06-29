@@ -12,5 +12,5 @@ Interested in learning about every single `Pokémon` created in the Pokéworld? 
 
 ## Features
 ![alt text](images/pokeball_dark10px.png) `Next` and `Previous` toggle buttons to navigate through pages of listed Pokémon with the [Poke API](https://pokeapi.co/).<br>
-![alt text](images/pokeball_dark10px.png) Clickable Pokémon names that will show stats such as Type, Weight, and Height.<br>
+![alt text](images/pokeball_dark10px.png) Clickable Pokémon names that will show stats such as `Type`, `Weight`, and `Height`.<br>
 ![alt text](images/pokeball_dark10px.png) Searchable Pokémon database funcationality.
