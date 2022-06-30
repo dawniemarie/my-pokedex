@@ -2,6 +2,7 @@ window.addEventListener('DOMContentLoaded', () => {
     fetchPokeList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20')
 })
 
+// DOM selection
 const pokeTypeOne = document.querySelector('.poke-type-one');
 const pokeTypeTwo = document.querySelector('.poke-type-two');
 const mainScreen = document.querySelector('.main-screen');
@@ -28,6 +29,7 @@ let prevUrl = null;
 let nextUrl = null;
 let pokeCharacters = [];
 
+// Global functions
 const capFirstLetter = (str) => str[0].toUpperCase() + str.substr(1);
 
 const resetMainScreen = () => {
@@ -63,6 +65,7 @@ const fetchPokeList = url => {
     });
         };
 
+// Asyncronous Request to Server (data for left side of dex screen)
 const getPokeData = id => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     .then(res => res.json())
@@ -70,7 +73,6 @@ const getPokeData = id => {
         resetMainScreen(); 
 
         const dataTypes = data['types'];
-        console.log(data['types'])
         const dataFirstType = dataTypes[0];
         const dataSecondType = dataTypes[1];
         pokeTypeOne.textContent = capFirstLetter(dataFirstType['type']['name']);
@@ -89,7 +91,7 @@ const getPokeData = id => {
         pokeFrontImage.src = data['sprites']['front_default'] || '';
         });
     };
-
+mainScreen.classList.add('grass')
     const handleNextBtnClick = () => {
         if (nextUrl) {
             fetchPokeList(nextUrl)
@@ -117,6 +119,7 @@ const getPokeData = id => {
         pokeListItem.addEventListener('click', handleListItemClick);
     }
 
+    // Submit request for Search
     pokeForm.addEventListener("submit", (event) => {
         event.preventDefault()
         event.target[0].value
@@ -135,7 +138,6 @@ const getPokeData = id => {
                 pokeTypeTwo.classList.add('default');
                 pokeTypeTwo.textContent = '';
             }
-
             mainScreen.classList.add(dataFirstType['type']['name']);
             pokeName.textContent = capFirstLetter(data['name']);
             pokeId.textContent = '#' + data['id'];
