@@ -1,6 +1,4 @@
 window.addEventListener('DOMContentLoaded', () => {
-    fetchPokeList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20')
-})
 
 // DOM selection
 const pokeTypeOne = document.querySelector('.poke-type-one');
@@ -26,8 +24,7 @@ const pokeTypes = [
 ];
 
 let prevUrl = null;
-let nextUrl = null;
-let pokeCharacters = [];
+let nextUrl = null; 
 
 // Global functions
 const capFirstLetter = (str) => str[0].toUpperCase() + str.substr(1);
@@ -65,6 +62,8 @@ const fetchPokeList = url => {
     });
         };
 
+fetchPokeList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20')
+
 // Asyncronous Request to Server (data for left side of dex screen)
 const getPokeData = id => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
@@ -76,6 +75,7 @@ const getPokeData = id => {
         const dataFirstType = dataTypes[0];
         const dataSecondType = dataTypes[1];
         pokeTypeOne.textContent = capFirstLetter(dataFirstType['type']['name']);
+        
         if (dataSecondType) {
             pokeTypeTwo.classList.remove('default');
             pokeTypeTwo.textContent = capFirstLetter(dataSecondType['type']['name']);
@@ -83,6 +83,7 @@ const getPokeData = id => {
             pokeTypeTwo.classList.add('default');
             pokeTypeTwo.textContent = '';
         }
+
         mainScreen.classList.add(dataFirstType['type']['name']);
         pokeName.textContent = capFirstLetter(data['name']);
         pokeId.textContent = '#' + data['id'];
@@ -91,17 +92,20 @@ const getPokeData = id => {
         pokeFrontImage.src = data['sprites']['front_default'] || '';
         });
     };
-mainScreen.classList.add('grass')
+
+// Next Button    
     const handleNextBtnClick = () => {
         if (nextUrl) {
             fetchPokeList(nextUrl)
         }
     }
+// Previous Button
     const handlePrevBtnClick = () => {
         if (prevUrl) {
             fetchPokeList (prevUrl)
         }
     }
+// Click action for Pokémon list
     const handleListItemClick = (e) => {
         if (!e.target) return;
         
@@ -121,7 +125,7 @@ mainScreen.classList.add('grass')
 
     // Submit request for Search
     pokeForm.addEventListener("submit", (event) => {
-        event.preventDefault()
+        event.preventDefault() /* prevents from redirecting and changing page for submission form */
         event.target[0].value
         fetch(`https://pokeapi.co/api/v2/pokemon/${event.target[0].value.toLowerCase()}`)
         .then(res => res.json())
@@ -146,5 +150,6 @@ mainScreen.classList.add('grass')
             pokeFrontImage.src = data['sprites']['front_default'] || '';
             
         })
-        pokeForm.reset()
+        pokeForm.reset() /* input text field defaults back to placeholder text after submit */
     })
+})

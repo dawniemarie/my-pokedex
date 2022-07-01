@@ -5,11 +5,6 @@
   }
 
   @font-face {
-    font-family: Pokemon Solid;
-    src: url(POKEMON_SOLID.TTF);
-  }
-
-  @font-face {
     font-family: Pokemon Hollow;
     src: url(POKEMON_HOLLOW.TTF);
   }
